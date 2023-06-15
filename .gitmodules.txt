@@ -1,0 +1,3 @@
+[submodule "msalesnumber"]
+    path = msalesnumber
+    url = git://github.com/suchitralingraj/msalesnumber.git
