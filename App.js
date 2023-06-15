@@ -1,5 +1,6 @@
 import React from 'react'
-import {useState} from   'react';
+import codePush from "react-native-code-push"; 
+import {useState, useEffect} from   'react';
 
 import {StyleSheet,ImageBackground,SafeAreaView} from 'react-native'
 import  LinearGradient  from 'react-native-linear-gradient'
@@ -7,13 +8,29 @@ import StartGamescreen from './screens/StartGameScreen'
 import GameScreen from './screens/GameScreen';
 import Color from './constants/colors';
 import GameOverScreen from './screens/GameOverScreen';
+let codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  updateDialog: { appendReleaseDescription: true }
 
+  };
 const App = () => {
+
  
   const [ userNumber, setUserNumber]=useState();
   const[gameIsOver,setgameIsOver]=useState(true);
   const[guessRounds,setGuessRounds]=useState(0);
+  
+  useEffect(() => {
 
+    codePush.sync({
+  
+      updateDialog: true,
+  
+      installMode: codePush.InstallMode.IMMEDIATE
+  
+    });
+  
+  }, []);
 
  
 
@@ -61,7 +78,7 @@ const App = () => {
   )
 }
 
-export default App;
+export default codePush(codePushOptions)(App); 
 
 const styles=StyleSheet.create({
  rootapp:{
