@@ -65,7 +65,6 @@ const App = () => {
   return (
     <LinearGradient  colors= {[Color.primary700,Color.primary800]} style={styles.rootapp}>
       <ImageBackground  
-      source={require('../assets/images/background.png')} 
       resizeMode='cover'
       style={styles.rootapp}
       imageStyle={styles.backgroundimage}
